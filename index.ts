@@ -6,6 +6,7 @@ import fileUpload from 'express-fileupload';
 
 import userRoutes from './routes/usuarios-routes';
 import postRoutes from './routes/post';
+import cors from 'cors';
 
 const server = new Server();
 
@@ -15,6 +16,9 @@ server.app.use( bodyParser.json());
 
 // FileUpload
 server.app.use( fileUpload() );
+
+// Configurar CORS
+server.app.use( cors({ origin: true, credentials: true }) );
 
 //Rutas de mi aplicacion
 server.app.use('/user', userRoutes);
